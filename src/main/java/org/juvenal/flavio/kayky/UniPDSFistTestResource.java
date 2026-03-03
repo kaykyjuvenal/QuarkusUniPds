@@ -4,6 +4,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Path("/unipds")
 @Produces(MediaType.TEXT_PLAIN) //produz em text_plain
@@ -11,16 +12,13 @@ import java.time.LocalDate;
 
 public class UniPDSFistTestResource {
 
-    private int i;
+    private int i = UUID.randomUUID().hashCode();
 
     @GET
     public int getI() {
         return i;
     }
 
-    public void setI(int i) {
-        this.i = i;
-    }
 
     @POST
     public void addI() {
@@ -35,9 +33,6 @@ public class UniPDSFistTestResource {
         this.i = i;
     }
 
-    public UniPDSFistTestResource(int i) {
-        this.setI(i);
-    }
     @GET
     @Path("/id1")
     public int getId1(){
