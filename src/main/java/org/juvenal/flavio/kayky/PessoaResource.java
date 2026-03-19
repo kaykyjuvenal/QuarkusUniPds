@@ -26,7 +26,15 @@ public class PessoaResource {
     @Transactional
     public Pessoa updatePessoa(Pessoa pessoa){
         Pessoa p =  Pessoa.findById(pessoa.id);
+        p.nome = pessoa.nome;
+        p.dataNascimento = pessoa.dataNascimento;
         p.persist();
         return p;
+    }
+    @DELETE
+    @Transactional
+    public void deletePessoa(int id){
+        Pessoa p =  Pessoa.findById(id);
+        p.delete();
     }
 }
