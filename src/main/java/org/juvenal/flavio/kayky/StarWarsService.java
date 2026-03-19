@@ -19,7 +19,7 @@ public interface StarWarsService {
     @Path("starships")
     @Timeout(value = 1000L)
     @Fallback(
-            fallbackMethod = "getStarshipsFallback "
+            fallbackMethod = "getStarshipsFallback"
     )
     @CircuitBreaker(
             requestVolumeThreshold = 2,
