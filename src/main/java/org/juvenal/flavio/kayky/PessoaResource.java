@@ -14,6 +14,12 @@ public class PessoaResource {
     public List<Pessoa> getPessoas(){
         return Pessoa.listAll();
     }
+
+    @GET
+    @Path("genero")
+    public List<Pessoa> getPessoasByGenero(@QueryParam("genero") String genero){
+        return Pessoa.findyAnyByGenero(genero);
+    }
     @POST
     @Transactional
     public Pessoa addPessoa(Pessoa pessoa){
@@ -28,6 +34,7 @@ public class PessoaResource {
         Pessoa p =  Pessoa.findById(pessoa.id);
         p.nome = pessoa.nome;
         p.dataNascimento = pessoa.dataNascimento;
+        p.genero = pessoa.genero;
         p.persist();
         return p;
     }
